@@ -1,0 +1,20 @@
+{
+    "name": "hopinspace/responsecache",
+    "license": "MIT",
+    "description": "Library to help debugging client calls without heavily loading server with http calls",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Gediminas Katilevicius",
+            "email": "gediminas.katilevicius@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hopinspace\\": "src/"
+        }
+    }
+}
