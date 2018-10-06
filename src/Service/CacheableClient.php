@@ -31,8 +31,11 @@ class CacheableClient extends Client
     public function request($method, $uri = '', array $options = [])
     {
         $cacheKey = \md5($method . $uri . \json_encode($options));
-        if (!mkdir($concurrentDirectory = $this->requestCacheDirectory) && !is_dir($concurrentDirectory)) {
-            throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+        if (!is_dir($this->requestCacheDirectory)
+            && !mkdir($this->requestCacheDirectory)
+            && !is_dir($this->requestCacheDirectory)
+        ) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $this->requestCacheDirectory));
         }
 
         $cacheFile = $this->requestCacheDirectory . '/' . $cacheKey;
